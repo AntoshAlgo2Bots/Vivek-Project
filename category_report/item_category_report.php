@@ -299,39 +299,73 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
 
 
-    <script src="./js/jquery-3.7.1.min.js"></script>
-<script>
+    <script src="./js/jquery-3.7.1.min.js">
+
+    // function exportTableToCSV(filename) {
+    //     const table = document.getElementById('reportTable');
+    //     let csvContent = '';
+
+    //     // Extract table headers
+    //     const headers = Array.from(table.querySelectorAll('thead th'))
+    //         .map(th => th.innerText)
+    //         .join(',');
+    //     csvContent += headers + '\n';
+
+    //     // Extract table rows
+    //     const rows = table.querySelectorAll('tbody tr');
+    //     rows.forEach(row => {
+    //         const cells = Array.from(row.querySelectorAll('td'))
+    //             .map(td => td.innerText)
+    //             .join(',');
+    //         csvContent += cells + '\n';
+    //     });
+
+    //     // Create a Blob and trigger a download
+    //     const blob = new Blob([csvContent], {
+    //         type: 'text/csv;charset=utf-8;'
+    //     });
+    //     const url = URL.createObjectURL(blob);
+    //     const link = document.createElement('a');
+    //     link.href = url;
+    //     link.setAttribute('download', filename);
+    //     document.body.appendChild(link);
+    //     link.click();
+    //     document.body.removeChild(link);
+    // }
+
+
     function exportTableToCSV(filename) {
-        const table = document.getElementById('reportTable');
-        let csvContent = '';
+    const table = document.getElementById('dataTable');
+    let csv = [];
+    
+    // Get table headers
+    const headers = Array.from(table.querySelectorAll('th')).map(th => th.innerText);
+    csv.push(headers.join(','));
 
-        // Extract table headers
-        const headers = Array.from(table.querySelectorAll('thead th'))
-            .map(th => th.innerText)
-            .join(',');
-        csvContent += headers + '\n';
+    // Get table rows
+    const rows = Array.from(table.querySelectorAll('tr')).slice(1); // Exclude header row
+    rows.forEach(row => {
+        const cells = Array.from(row.querySelectorAll('td')).map(td => td.innerText);
+        csv.push(cells.join(','));
+    });
 
-        // Extract table rows
-        const rows = table.querySelectorAll('tbody tr');
-        rows.forEach(row => {
-            const cells = Array.from(row.querySelectorAll('td'))
-                .map(td => td.innerText)
-                .join(',');
-            csvContent += cells + '\n';
-        });
+    // Create a CSV file
+    const csvContent = csv.join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
 
-        // Create a Blob and trigger a download
-        const blob = new Blob([csvContent], {
-            type: 'text/csv;charset=utf-8;'
-        });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', filename);
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
+    // Create a link to download the CSV
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', filename);
+    link.style.display = 'none';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+
 </script>
 <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
 

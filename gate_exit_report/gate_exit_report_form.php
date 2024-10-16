@@ -5,7 +5,7 @@
 // $password = "root";
 // $dbname = "for_office";
 
-$conn=mysqli_connect("localhost","root","","for_office") or die("connection failed");
+$conn=mysqli_connect("localhost","root","","vivek-project-main") or die("connection failed");
 
 
 if ($conn->connect_error) {
@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 
 
 
-$sql = "SELECT * FROM gate_exit_form ";
+$sql = "SELECT * FROM gate_exit_report ";
 
 
 $result = mysqli_query($conn, $sql);
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     if (isset($_GET["search_query"])) {
         $query = $_GET["search_query"];
 
-        $sql = "SELECT * FROM gate_exit_form  where po_number ='$query' or invoice_number ='$query' or no_of_boxes='$query' ";
+        $sql = "SELECT * FROM gate_exit_report  where s_no ='$query' or po_number='$query' or invoice_number='$query' ";
 
         $result = mysqli_query($conn, $sql);
 
@@ -226,9 +226,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                     <td class="px-6 py-4">
                                         <?php echo $row['weight'] ?>
                                     </td>
-                                    <td class="px-6 py-4">
-                                        <?php echo $row['recieving_datetime'] ?>
-                                    </td>
+                                   
 
 
                                     <td class="px-6 py-4">

@@ -90,7 +90,7 @@
                     console.log(data);
 
                     $("#username").val(res.data.username);
-                    
+
                 })
             })
         });

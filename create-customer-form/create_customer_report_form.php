@@ -5,7 +5,7 @@
 // $password = "root";
 // $dbname = "for_office";
 
-$conn = mysqli_connect("localhost", "root", "", "all_form_data") or die("connection failed");
+$conn = mysqli_connect("localhost", "root", "", "vivek-project-main") or die("connection failed");
 
 
 if ($conn->connect_error) {
@@ -248,7 +248,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                         <?php echo $row['organization_name'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['oraganigation_type'] ?>
+                                        <?php echo $row['organigation_type'] ?>
                                     </td>
                                     <td class="px-6 py-4">
                                         <?php echo $row['gst_number'] ?>
@@ -418,6 +418,38 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         </div>
     </section>
 
+    <script>
+    function exportTableToCSV(filename) {
+    const table = document.getElementById('dataTable');
+    let csv = [];
+    
+    // Get table headers
+    const headers = Array.from(table.querySelectorAll('th')).map(th => th.innerText);
+    csv.push(headers.join(','));
+
+    // Get table rows
+    const rows = Array.from(table.querySelectorAll('tr')).slice(1); // Exclude header row
+    rows.forEach(row => {
+        const cells = Array.from(row.querySelectorAll('td')).map(td => td.innerText);
+        csv.push(cells.join(','));
+    });
+
+    // Create a CSV file
+    const csvContent = csv.join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+
+    // Create a link to download the CSV
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', filename);
+    link.style.display = 'none';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>
 
 
 

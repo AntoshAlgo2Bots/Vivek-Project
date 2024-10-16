@@ -1,10 +1,10 @@
 <?php
-$conn=mysqli_connect("localhost","root","","all_form_data") or die("connection failed");
+$conn=mysqli_connect("localhost","root","","vivek-project-main") or die("connection failed");
 
 
 if(isset($_REQUEST['organization_name'])){
-    $db=$conn->query("insert into organization_details_tbl(organization_name, oraganigation_type, gst_number,customer_name,customer_type,sub_cutomer,customer_status,starting_date,ending_date,contact_person_name,contact_person,contact_person_no)values
-    ('{$_REQUEST['organization_name']}','{$_REQUEST['oraganigation_type']}','{$_REQUEST['gst_number']}','{$_REQUEST['customer_name']}','{$_REQUEST['customer_type']}','{$_REQUEST['sub_cutomer']}','{$_REQUEST['customer_status']}','{$_REQUEST['starting_date']}','{$_REQUEST['ending_date']}','{$_REQUEST['contact_person_name']}','{$_REQUEST['contact_person']}','{$_REQUEST['contact_person_no']}') ");
+    $db=$conn->query("insert into organization_details_tbl(organization_name,organigation_type, gst_number,customer_name,customer_type,sub_cutomer,customer_status,starting_date,ending_date,contact_person_name,contact_person,contact_person_no)values
+    ('{$_REQUEST['organization_name']}','{$_REQUEST['organigation_type']}','{$_REQUEST['gst_number']}','{$_REQUEST['customer_name']}','{$_REQUEST['customer_type']}','{$_REQUEST['sub_cutomer']}','{$_REQUEST['customer_status']}','{$_REQUEST['starting_date']}','{$_REQUEST['ending_date']}','{$_REQUEST['contact_person_name']}','{$_REQUEST['contact_person']}','{$_REQUEST['contact_person_no']}') ");
 
 
     if($db){
@@ -20,7 +20,7 @@ if(isset($_REQUEST['organization_name'])){
 
 
 if(isset($_REQUEST['site_code'])){
-    $db=$conn->query("insert into address_details_tbl( site_code, site_name, site_description, add_line1,add_line2,postal_code, city_name,state,country,contact_person_name,contact_person,contact_person_no)values('{$_REQUEST['site_code']}','{$_REQUEST['site_name']}','{$_REQUEST['site_description']}','{$_REQUEST['add_line1']}','{$_REQUEST['add_line2']}','{$_REQUEST['postal_code']}','{$_REQUEST['city_name']}','{$_REQUEST['state']}','{$_REQUEST['country']}','{$_REQUEST['contact_person_name']}','{$_REQUEST['contact_person']}','{$_REQUEST['contact_person_no']}') ");
+    $db=$conn->query("insert into address_details_tbl( site_code, site_name, site_description, add_line1,add_line2,postal_code, city_name,state,country,contact_preson_name,contact_person,contact_person_no)values('{$_REQUEST['site_code']}','{$_REQUEST['site_name']}','{$_REQUEST['site_description']}','{$_REQUEST['add_line1']}','{$_REQUEST['add_line2']}','{$_REQUEST['postal_code']}','{$_REQUEST['city_name']}','{$_REQUEST['state']}','{$_REQUEST['country']}','{$_REQUEST['contact_person_name']}','{$_REQUEST['contact_person']}','{$_REQUEST['contact_person_no']}') ");
 
 
     if($db){

@@ -5,7 +5,7 @@
 // $password = "root";
 // $dbname = "for_office";
 
-$conn=mysqli_connect("localhost","root","","all_form_data") or die("connection failed");
+$conn=mysqli_connect("localhost","root","","vivek-project-main") or die("connection failed");
 
 
 if ($conn->connect_error) {

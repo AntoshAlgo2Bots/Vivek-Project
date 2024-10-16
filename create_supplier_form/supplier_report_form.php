@@ -1,11 +1,12 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "for_office";
+// $servername = "localhost";
+// $username = "root";
+// $password = "root";
+// $dbname = "for_office";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = mysqli_connect("localhost", "root", "", "vivek-project-main") or die("connection failed");
+
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -16,8 +17,11 @@ if ($conn->connect_error) {
 
 
 
-$sql = "SELECT * FROM for_office.lead_details_header_form a inner JOIN for_office.lead_details_middle_level_form b ON
- a.record_no=b.record_no";
+$sql = "SELECT * 
+FROM supplier_organization_details_tbl a 
+INNER JOIN supplier_address_details_tbl b ON a.supplier_id  = b.supplier_id  
+INNER JOIN supplier_banking_details_tbl c ON b.supplier_id  = c.supplier_id ;";
+
 
 
 $result = mysqli_query($conn, $sql);
@@ -32,16 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     if (isset($_GET["search_query"])) {
         $query = $_GET["search_query"];
 
-        
-        // $sql = "SELECT *, b.name AS subCatname 
-        // FROM itemmastercategory a 
-        // JOIN sub_category b ON a.categoryId = b.catId 
-        // JOIN requireattributeforcatname c ON b.subCatId = c.SubcatId  
-        // WHERE a.categoryId = '$query' OR a.catagory_name = '$query' OR b.subCatId = '$query' 
-        // ORDER BY b.subCatId ASC";
 
-        $sql = "SELECT * FROM for_office.lead_details_header_form a inner JOIN for_office.lead_details_middle_level_form b ON
- a.record_no=b.record_no where a.record_no ='$query' or a.created_by ='$query' or a.form_status='$query' ";
+
+        $sql = "SELECT * FROM supplier_organization_details_tbl a INNER JOIN supplier_address_details_tbl b ON a.supplier_id  = b.supplier_id  INNER JOIN supplier_banking_details_tbl c ON a.supplier_id  = c.supplier_id  WHERE a.supplier_id = '$query' OR a.oraganigation_name = '$query'  OR a.oraganigation_type = '$query'";
+
 
         $result = mysqli_query($conn, $sql);
 
@@ -66,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js">
     </script>
-    <title>Query Information</title>
+    <title>Create Supplier Report</title>
 </head>
 
 <body>
@@ -187,32 +185,82 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                         class="w-full text-sm whitespace-nowrap text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th scope="col" class="px-6 py-3">S.no </th>
-                                <th scope="col" class="px-6 py-3">Record Number</th>
-                                <th scope="col" class="px-6 py-3">Created By</th>
-                                <th scope="col" class="px-6 py-3">Created Date</th>
-                                <th scope="col" class="px-6 py-3">Status</th>
-                                <th scope="col" class="px-6 py-3">Lead Source</th>
-                                <th scope="col" class="px-6 py-3">Ref By</th>
-                                <th scope="col" class="px-6 py-3">Ref Phone Number</th>
-                                <th scope="col" class="px-6 py-3">Lead Type</th>
-                                <th scope="col" class="px-6 py-3">Contact Person Name</th>
-                                <th scope="col" class="px-6 py-3">Contact Person Phone No</th>
-                                <th scope="col" class="px-6 py-3">Contact Person Email</th>
-                                <th scope="col" class="px-6 py-3">Contact Person Email</th>
-                                <th scope="col" class="px-6 py-3">Contact Person Address</th>
-                                <th scope="col" class="px-6 py-3">Lead Receiving Date</th>
-                                <th scope="col" class="px-6 py-3">Assigned To</th>
-                                <th scope="col" class="px-6 py-3">Query Start Date</th>
-                                <th scope="col" class="px-6 py-3">Follow Up</th>
-                                <th scope="col" class="px-6 py-3">Follow Up Reminder</th>
-                                <th scope="col" class="px-6 py-3">No of times</th>
-                                <th scope="col" class="px-6 py-3">Query End Date</th>
-                                <th scope="col" class="px-6 py-3">Installation required</th>
-                                <th scope="col" class="px-6 py-3">Tentative Installation Date</th>
-                                <th scope="col" class="px-6 py-3">Tentative Install. Delivery Date</th>
-                                <th scope="col" class="px-6 py-3">
-                                    <span class="sr-only">Actions</span>
+                                <th scope="col" class="px-6 py-3">Supplier id </th>
+                                <th scope="col" class="px-6 py-3">Oraganigation
+                                Name</th>
+                                <th scope="col" class="px-6 py-3">Oraganigation Type</th>
+                                <th scope="col" class="px-6 py-3">GST Number</th>
+                                <th scope="col" class="px-6 py-3">Supplier
+                                Code</th>
+                                <th scope="col" class="px-6 py-3">Supplier
+                                Name</th>
+                                <th scope="col" class="px-6 py-3">Supplier
+                                Type</th>
+                                <th scope="col" class="px-6 py-3">Sub
+                                Supplier
+                                Type</th>
+                                <th scope="col" class="px-6 py-3">Supplier
+                                Status</th>
+                                <th scope="col" class="px-6 py-3">Starting
+                                Date</th>
+                                <th scope="col" class="px-6 py-3">Ending
+                                Date</th>
+                                <th scope="col" class="px-6 py-3">Contact
+                                Person
+                                Name</th>
+                                <th scope="col" class="px-6 py-3">Contact
+                                Person Email</th>
+                                <th scope="col" class="px-6 py-3">Contact
+                                Person
+                                Number</th>
+                                <th scope="col" class="px-6 py-3">Site
+                                Code</th>
+                                <th scope="col" class="px-6 py-3">Site
+                                Name</th>
+                                <th scope="col" class="px-6 py-3">Site
+                                Description</th>
+                                <th scope="col" class="px-6 py-3">Address
+                                Line
+                                1</th>
+                                <th scope="col" class="px-6 py-3">Address
+                                Line 2</th>
+                                <th scope="col" class="px-6 py-3">Postal
+                                Code</th>
+                                <th scope="col" class="px-6 py-3">City</th>
+                                <th scope="col" class="px-6 py-3">State</th>
+                                <th scope="col" class="px-6 py-3">Country</th>
+                                <th scope="col" class="px-6 py-3">Contact
+                                Person
+                                Name</th>
+                                <th scope="col" class="px-6 py-3">Contact
+                                Person Email</th>
+                                <th scope="col" class="px-6 py-3">Contact
+                                Person
+                                Number</th>
+                                <th scope="col" class="px-6 py-3">Site
+                                Code</th>
+                                <th scope="col" class="px-6 py-3">Branch
+                                Name</th>
+                                <th scope="col" class="px-6 py-3">Branch
+                                Number</th>
+                                <th scope="col" class="px-6 py-3">Branch
+                                Type</th>
+                                <th scope="col" class="px-6 py-3">Bank
+                                Name</th>
+                                <th scope="col" class="px-6 py-3">Bank
+                                Number</th>
+
+                                <th scope="col" class="px-6 py-3">Bank
+                                Type</th>
+                                <th scope="col" class="px-6 py-3">Account
+                                Name</th>
+                                <th scope="col" class="px-6 py-3">Account
+                                Number</th>
+                                <th scope="col" class="px-6 py-3">Account Type</th>
+                                <th scope="col" class="px-6 py-3">IFSC Code</th>
+
+
+                                <span class="sr-only">Actions</span>
                                 </th>
                             </tr>
                         </thead>
@@ -230,77 +278,141 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
                                 <tr class="border-b dark:border-gray-700">
                                     <td class="px-6 py-4">
-                                        <?php echo $row['record_no'] ?>
+                                        <?php echo $row['supplier_id'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['oraganigation_name'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['created_by'] ?>
+                                        <?php echo $row['oraganigation_type'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['created_date'] ?>
+                                        <?php echo $row['gst_number'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['form_status'] ?>
+                                        <?php echo $row['supplier_code'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['lead_source'] ?>
+                                        <?php echo $row['supplier_name'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['ref_By'] ?>
+                                        <?php echo $row['supplier_type'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['sub_supplier_type'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['supplier_status'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['starting_date'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['ending_date'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['person_name'] ?>
+                                    </td>
+
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['person_email'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['person_number'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['site_code'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['site_name'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['site_description'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['address_line_1'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['address_line_2'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['postal_code'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['ref_phone_no'] ?>
+                                        <?php echo $row['city'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['lead_type'] ?>
+                                        <?php echo $row['state'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['contact_person_name'] ?>
+                                        <?php echo $row['country'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['contact_person_phone_no'] ?>
+                                        <?php echo $row['person_name'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['contact_person_email'] ?>
+                                        <?php echo $row['person_email'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['contact_person_address'] ?>
+                                        <?php echo $row['person_number'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['lead_received_date'] ?>
+                                        <?php echo $row['site_code'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['created_by'] ?>
+                                        <?php echo $row['branch_name_'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['created_date'] ?>
+                                        <?php echo $row['brach_number'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['assigned_to'] ?>
+                                        <?php echo $row['brach_type'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['query_start_date'] ?>
+                                        <?php echo $row['bank_name'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['bank_number'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['follow_up'] ?>
+                                        <?php echo $row['bank_type'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['followup_reminder_frequency'] ?>
+                                        <?php echo $row['account_name'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['no_of_times'] ?>
+                                        <?php echo $row['account_number'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['query_end_date'] ?>
+                                        <?php echo $row['account_type'] ?>
                                     </td>
+
                                     <td class="px-6 py-4">
-                                        <?php echo $row['installation_required'] ?>
+                                        <?php echo $row['ifsc_code'] ?>
                                     </td>
-                                    <td class="px-6 py-4">
-                                        <?php echo $row['tentative_installation'] ?>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <?php echo $row['tentative_delivery_date'] ?>
-                                    </td>
+
+
+
+
+
+
+
+
                                     <td class="px-6 py-3 flex items-center justify-end">
                                         <button id="apple-imac-27-dropdown-button"
                                             data-dropdown-toggle="apple-imac-27-dropdown"
@@ -348,7 +460,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         </div>
     </section>
 
-    <script>
+<script>
     function exportTableToCSV(filename) {
     const table = document.getElementById('dataTable');
     let csv = [];
@@ -382,5 +494,5 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 </script>
 
 
-
 </body>
+</html>

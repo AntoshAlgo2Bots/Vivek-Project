@@ -5,7 +5,7 @@
 // $password = "root";
 // $dbname = "for_office";
 
-$conn=mysqli_connect("localhost","root","","for_office") or die("connection failed");
+$conn=mysqli_connect("localhost","root","","vivek-project-main") or die("connection failed");
 
 
 if ($conn->connect_error) {
@@ -17,8 +17,8 @@ if ($conn->connect_error) {
 
 
 
-$sql = "SELECT *,b.name as subCatname FROM for_office.itemmastercategory a join for_office.sub_category b 
-on a.categoryId = b.catId JOIN for_office.requireattributeforcatname c on b.subCatId= c.SubcatId  order by b.subcatid asc;";
+$sql = "SELECT *,b.name as subCatname FROM itemmastercategory a join sub_category b 
+on a.categoryId = b.catId JOIN requireattributeforcatname c on b.subCatId= c.SubcatId  order by b.subcatid asc;";
 
 
 
