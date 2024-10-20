@@ -64,7 +64,7 @@
 
 
 
-                    <div>
+                        <div>
                             <label for=""
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Supplier
                                 id :
@@ -72,9 +72,9 @@
                             <input type="text" name="supplier_id" placeholder="Enter supplier code" id="id"
                                 class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
 
-                                <button type="button" id="search"
-                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-xs rounded-lg text-sm px-8 py-1 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Search</button>
-                            
+                            <button type="button" id="search"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-xs rounded-lg text-sm px-8 py-1 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Search</button>
+
                         </div>
                         <div>
                             <label for=""
@@ -84,7 +84,7 @@
                             <input type="text" name="supplier_code" placeholder="Enter supplier code" id="supplier_code"
                                 class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
 
-                            
+
                         </div>
                         <div>
                             <label for=""
@@ -93,7 +93,7 @@
                             </label>
                             <input type="text" name="supplier_name" placeholder="Enter supplier name" id="supplier_name"
                                 class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
-                                
+
                         </div>
 
 
@@ -105,7 +105,8 @@
                             class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Oraganigation
                             Name :
                         </label>
-                        <input type="text" name="oraganigation_name" placeholder="Enter oraganigation name" id="oraganigation_name"
+                        <input type="text" name="oraganigation_name" placeholder="Enter oraganigation name"
+                            id="oraganigation_name"
                             class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
 
                     </div>
@@ -115,14 +116,15 @@
                         <label for="countries"
                             class="block mb-2 text-xs font-medium text-gray-900 dark:text-white">Oraganigation Type :
                         </label>
-                        <input type="text" name="oraganigation_type" placeholder="Enter GST number" id="oraganigation_type"
-                        class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                        <input type="text" name="oraganigation_type" placeholder="Enter GST number"
+                            id="oraganigation_type"
+                            class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                     </div>
 
                     <div>
                         <label for=""
                             class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">GST Number :
-                        </label> 
+                        </label>
                         <input type="text" name="gst_number" placeholder="Enter GST number" id="gst_number"
                             class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                     </div>
@@ -138,13 +140,14 @@
                             class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                     </div>
 
-                    
+
                     <div>
                         <label for=""
                             class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Sub Supplier
                             Type :
                         </label>
-                        <input type="text" name="sub_supplier_type" placeholder="Enter sub supplier type" id="sub_supplier_type"
+                        <input type="text" name="sub_supplier_type" placeholder="Enter sub supplier type"
+                            id="sub_supplier_type"
                             class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                     </div>
                     <div>
@@ -153,11 +156,12 @@
                             Status
                             :
                         </label>
-                        <input type="text" name="supplier_status" placeholder="Enter supplier status" id="supplier_status"
+                        <input type="text" name="supplier_status" placeholder="Enter supplier status"
+                            id="supplier_status"
                             class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                     </div>
                 </div>
-                
+
                 <div class="flex flex-wrap gap-x-20">
                     <div>
                         <label for=""
@@ -185,7 +189,7 @@
                             class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                     </div>
                 </div>
-                
+
                 <div class="flex flex-wrap gap-x-20">
 
                     <div>
@@ -194,7 +198,8 @@
                             Person Email
                             :
                         </label>
-                        <input type="text" name="person_email"  placeholder="Enter person email" id="contact_person_email"
+                        <input type="text" name="person_email" placeholder="Enter person email"
+                            id="contact_person_email"
                             class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                     </div>
 
@@ -204,7 +209,8 @@
                             Person
                             Number :
                         </label>
-                        <input type="text" name="person_number" placeholder="Enter person number" id="contact_person_number"
+                        <input type="text" name="person_number" placeholder="Enter person number"
+                            id="contact_person_number"
                             class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                     </div>
 
@@ -238,7 +244,7 @@
                             class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Site
                             Name :
                         </label>
-                        <input type="text" name="site_name" placeholder="Enter person "id="site_number"
+                        <input type="text" name="site_name" placeholder="Enter person " id="site_number"
                             class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                     </div>
 
@@ -248,7 +254,8 @@
                             Description
                             :
                         </label>
-                        <input type="text" name="site_description" placeholder="Enter person number" id="site_description"
+                        <input type="text" name="site_description" placeholder="Enter person number"
+                            id="site_description"
                             class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                     </div>
 
@@ -431,8 +438,8 @@
                 </div>
                 <div class="flex flex-wrap gap-x-20">
                     <div>
-                        <label 
-                            class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Account Name
+                        <label class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Account
+                            Name
                             :
                         </label>
                         <input type="text" name="account_name" placeholder="Enter account name" id="account_name"
@@ -495,10 +502,10 @@
                 var srch = $('#id').val();
 
                 $.post("actionSearchSupplier.php", { srch }, function (data) {
-                    
+
                     console.log(data)
                     var res = data
-                    
+
                     console.log(data);
                     $("#supplier_code").val(res.data.supplier_code);
                     $("#supplier_name").val(res.data.supplier_name);
@@ -541,9 +548,9 @@
                     $("#account_number").val(res.data.account_number);
                     $("#account_type").val(res.data.account_type);
                     $("#ifsc_code").val(res.data.ifsc_code);
-                 
-                
-                },"json")
+
+
+                }, "json")
             })
         });
     </script>

@@ -15,7 +15,7 @@ if(isset($_REQUEST['oraganigation_name'])){
         $response['message'] = 'something went wrong please try again';
         $response['sql_error'] = mysqli_error($conn);
     }
-}
+}   
 
 
 if(isset($_REQUEST['site_code'])){

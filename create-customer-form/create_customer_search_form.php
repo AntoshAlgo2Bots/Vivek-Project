@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.4/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-    <title>Create Supplier Form</title>
+    <title>Create Customer Form</title>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
         class="fixed top-0 left-0 z-40 w-60 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-100 dark:bg-gray-800">
-            <h1 class="text-xl font-bold border-b border-gray-900 text-center py-3">Supplier Details</h1>
+            <h1 class="text-xl font-bold border-b border-gray-900 text-center py-3">Customer Details</h1>
             <ul class="space-y-2 font-medium mt-3">
                 <li>
                     <a href="#"
@@ -54,27 +54,42 @@
     </aside>
     <form action="" id="formData">
         <div class="p-4 sm:ml-64">
-            <h1 class="text-3xl font-bold text-center border-b border-gray-600 pb-4 mb-4">Create Supplier Form</h1>
+            <h1 class="text-3xl font-bold text-center border-b border-gray-600 pb-4 mb-4">Search Customer Form</h1>
             <div class="p-4 border-2 border-gray-400 border-dashed rounded-lg dark:border-gray-700"
                 id="organization_deatils">
                 <h1 class="text-xl font-medium border-b border-gray-700 text-center pb-3">Organization Details</h1>
                 <div id="oraganigation_duplicate">
+
+                <div>
+                            <label for=""
+                                class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Customer
+                                id :
+                            </label>
+                            <input type="text" name="customer_id" placeholder="Enter customer id" id="id"
+                                class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
+
+                            <button type="button" id="search"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-xs rounded-lg text-sm px-8 py-1 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Search</button>
+
+                        </div>
                     <div class="flex flex-wrap gap-x-20 mt-5">
+
+                        
                         <div>
                             <label for=""
-                                class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Oraganigation
+                                class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Organigation
                                 Name :
                             </label>
-                            <input type="text" name="oraganigation_name" placeholder="Enter oraganigation name"
+                            <input type="text" placeholder="Enter organigation name" name="organization_name" id="organization_name"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
                         <div>
                             <label for="countries"
-                                class="block mb-2 text-xs font-medium text-gray-900 dark:text-white">Oraganigation Type
+                                class="block mb-2 text-xs font-medium text-gray-900 dark:text-white">Organigation Type
                                 :
                             </label>
-                            <select id="countries" name="oraganigation_type"
+                            <select id="countries" name="oraganigation_type" id="organigation_type"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-xs   rounded-md focus:ring-blue-500 focus:border-blue-500 block w-60 h-7 pl-2 pt-1 mb-4  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected disabled>Select One Type</option>
                                 <option value="US">LLC</option>
@@ -89,7 +104,7 @@
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">GST
                                 Number :
                             </label>
-                            <input type="text" name="gst_number" placeholder="Enter GST number"
+                            <input type="text" placeholder="Enter GST number" name="gst_number" id="gst_number"
                                 class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
                     </div>
@@ -97,51 +112,41 @@
                     <div class="flex flex-wrap gap-x-20">
                         <div>
                             <label for=""
-                                class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Supplier
-                                Code :
-                            </label>
-                            <input type="text" name="supplier_code" placeholder="Enter supplier name"
-                                class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
-
-                        </div>
-                        <div>
-                            <label for=""
-                                class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Supplier
+                                class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Customer
                                 Name :
                             </label>
-                            <input type="text" name="supplier_name" placeholder="Enter supplier name"
+                            <input type="text" placeholder="Enter Customer name" name="customer_name" id="customer_name"
                                 class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
                         <div>
                             <label for=""
-                                class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Supplier
+                                class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Customer
                                 Type :
                             </label>
-                            <input type="text" name="supplier_type" placeholder="Enter supplier type"
-                                class="w-60 rounded-md border mb-4 text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                            <input type="text" placeholder="Enter Customer type" name="customer_type" id="customer_type"
+                                class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
-
-                    </div>
-
-                    <div class="flex flex-wrap gap-x-20">
                         <div>
                             <label for=""
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Sub
-                                Supplier
-                                Type :
+                                Customer Type :
                             </label>
-                            <input type="text" name="sub_supplier_type" placeholder="Enter sub supplier type"
+                            <input type="text" placeholder="Enter sub Customer type" name="sub_cutomer" id="sub_cutomer"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
+
+                    </div>
+
+                    <div class="flex flex-wrap gap-x-20">
                         <div>
                             <label for=""
-                                class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Supplier
+                                class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Customer
                                 Status
                                 :
                             </label>
-                            <input type="text" name="supplier_status" placeholder="Enter supplier status"
+                            <input type="text" placeholder="Enter Customer status" name="customer_status" id="customer_status"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
                         <div>
@@ -149,7 +154,15 @@
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Starting
                                 Date :
                             </label>
-                            <input type="date" name="starting_date"
+                            <input type="date" name="starting_date" id="starting_date"
+                                class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                        </div>
+                        <div>
+                            <label for=""
+                                class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Ending
+                                Date :
+                            </label>
+                            <input type="date" name="ending_date" id="ending_date"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
                     </div>
@@ -157,19 +170,10 @@
                     <div class="flex flex-wrap gap-x-20">
                         <div>
                             <label for=""
-                                class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Ending
-                                Date :
-                            </label>
-                            <input type="date" name="ending_date"
-                                class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
-                        </div>
-                        <div>
-                            <label for=""
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Contact
-                                Person
-                                Name :
+                                Person Name :
                             </label>
-                            <input type="text" name="person_name" placeholder="Enter person name"
+                            <input type="text" placeholder="Enter person name" name="contact_person_name" id="contact_person_name"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
@@ -179,21 +183,22 @@
                                 Person Email
                                 :
                             </label>
-                            <input type="text" name="person_email" placeholder="Enter person email"
+                            <input type="email" placeholder="Enter person " name="contact_person" id="contact_person"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
-                    </div>
 
-                    <div>
                         <div>
                             <label for=""
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Contact
-                                Person
-                                Number :
+                                Person Number :
                             </label>
-                            <input type="text" name="person_number" placeholder="Enter person number"
+                            <input type="text" placeholder="Enter person number" name="contact_person_no" id="contact_person_no"
                                 class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
+
+
+
+
                     </div>
 
                 </div>
@@ -216,7 +221,7 @@
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Site
                                 Code :
                             </label>
-                            <input type="text" name="site_code" placeholder="Enter person name"
+                            <input type="text" placeholder="Enter person name" name="site_code" id="site_code"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
@@ -225,7 +230,7 @@
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Site
                                 Name :
                             </label>
-                            <input type="text" name="site_name" placeholder="Enter person "
+                            <input type="text" placeholder="Enter person " name="site_name" id="site_name"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
@@ -235,7 +240,7 @@
                                 Description
                                 :
                             </label>
-                            <input type="text" name="site_description" placeholder="Enter person number"
+                            <input type="text" placeholder="Enter person number" name="site_description" id="site_description"
                                 class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
@@ -245,18 +250,17 @@
                         <div>
                             <label for=""
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Address
-                                Line
-                                1 :
+                                Line 1 :
                             </label>
-                            <input type="text" name="address_line_1" placeholder="Enter address line 1"
+                            <input type="text" placeholder="Enter address line 1" name="add_line1" id="add_line1"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
                         <div>
                             <label for="countries"
-                                class="block mb-2 text-xs font-medium text-gray-900 dark:text-white">Address
-                                Line 2 : </label>
-                            <input type="text" name="address_line_2" placeholder="Enter address line 2"
+                                class="block mb-2 text-xs font-medium text-gray-900 dark:text-white">Address Line 2 :
+                            </label>
+                            <input type="text" placeholder="Enter address line 2" name="add_line2" id="add_line2"
                                 class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
 
                         </div>
@@ -267,7 +271,7 @@
                                 Code
                                 :
                             </label>
-                            <input type="text" name="postal_code" placeholder="Enter postal code"
+                            <input type="text" placeholder="Enter postal code" name="postal_code" id="postal_code"
                                 class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
@@ -278,7 +282,7 @@
                             <label for=""
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">City :
                             </label>
-                            <input type="text" name="city" placeholder="Enter city name"
+                            <input type="text" placeholder="Enter city name" name="city_name" id="city_name"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
@@ -287,7 +291,7 @@
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">State
                                 :
                             </label>
-                            <input type="text" name="state" placeholder="Enter state name"
+                            <input type="text" placeholder="Enter state name" name="state" id="state"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
@@ -296,7 +300,7 @@
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">
                                 Country :
                             </label>
-                            <input type="text" name="country" placeholder="Enter country name"
+                            <input type="text" placeholder="Enter country name" name="country" id="country"
                                 class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
                     </div>
@@ -305,30 +309,28 @@
                         <div>
                             <label for=""
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Contact
-                                Person
-                                Name :
+                                Person Name :
                             </label>
-                            <input type="text" name="person_name" placeholder="Enter person name"
+                            <input type="text" placeholder="Enter person name" name="contact_preson_name" id="contact_preson"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
                         <div>
                             <label for=""
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Contact
-                                Person Email
+                                Person
                                 :
                             </label>
-                            <input type="text" name="person_email" placeholder="Enter person email"
+                            <input type="text" placeholder="Enter person " name="contact_person" id="contact_person_email"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
                         <div>
                             <label for=""
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Contact
-                                Person
-                                Number :
+                                Person Number :
                             </label>
-                            <input type="text" name="person_number" placeholder="Enter person number"
+                            <input type="text" placeholder="Enter person number" name="contact_person_no" id="contact_person_number"
                                 class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
@@ -354,10 +356,9 @@
 
                     <div class="mt-2 border-b border-gray-900">
                         <label for=""
-                            class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Site
-                            Code :
+                            class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Site Code :
                         </label>
-                        <input type="text" name="site_code" placeholder="Enter site code"
+                        <input type="text" placeholder="Enter site code" name="site_code" id="sites_code"
                             class="w-60 rounded-md border text-xs mb-3 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                     </div>
 
@@ -369,15 +370,15 @@
                                 Name
                                 :
                             </label>
-                            <input type="text" name="branch_name_" placeholder="Enter branch name"
+                            <input type="text" placeholder="Enter branch name" name="branch_name" id="branch_name"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
                         <div>
                             <label for="countries"
-                                class="block mb-2 text-xs font-medium text-gray-900 dark:text-white">Branch
-                                Number : </label>
-                            <input type="text" name="brach_number" placeholder="Enter brach number"
+                                class="block mb-2 text-xs font-medium text-gray-900 dark:text-white">Branch Number :
+                            </label>
+                            <input type="text" placeholder="Enter brach number" name="branch_no" id="branch_nubmer"
                                 class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
 
                         </div>
@@ -388,7 +389,7 @@
                                 Type
                                 :
                             </label>
-                            <input type="text" name="brach_type" placeholder="Enter brach type"
+                            <input type="text" placeholder="Enter brach type" name="branch_type" id="branch_type"
                                 class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
@@ -400,7 +401,7 @@
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">Bank
                                 Name :
                             </label>
-                            <input type="text" name="bank_name" placeholder="Enter bank name"
+                            <input type="text" placeholder="Enter bank name" name="bank_name" id="bank_name"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
@@ -410,7 +411,7 @@
                                 Number
                                 :
                             </label>
-                            <input type="text" name="bank_number" placeholder="Enter bank number"
+                            <input type="text" placeholder="Enter bank number" name="bank_no" id="bank_no"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
@@ -419,7 +420,7 @@
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">
                                 Bank Type :
                             </label>
-                            <input type="text" name="bank_type" placeholder="Enter bank type"
+                            <input type="text" placeholder="Enter bank type" name="bank_type" id="bank_type"
                                 class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
                     </div>
@@ -430,7 +431,7 @@
                                 Name
                                 :
                             </label>
-                            <input type="text" name="account_name" placeholder="Enter account name"
+                            <input type="text" placeholder="Enter account name" name="account_name" id="account_name"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
@@ -440,7 +441,7 @@
                                 Number
                                 :
                             </label>
-                            <input type="text" name="account_number" placeholder="Enter account number"
+                            <input type="text" placeholder="Enter account number" name="account_no" id="account_number"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
 
@@ -449,7 +450,7 @@
                                 class="block  mb-2 font-bold text-xs font-medium text-gray-900 dark:text-white">
                                 Account Type :
                             </label>
-                            <input type="text" name="account_type" placeholder="Enter account type"
+                            <input type="text" placeholder="Enter account type" name="account_type" id="account_type"
                                 class="w-60 rounded-md border text-xs border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
                     </div>
@@ -461,7 +462,7 @@
                                     Code :
                                 </label>
                             </a>
-                            <input type="text" name="ifsc_code" placeholder="Enter IFSC code"
+                            <input type="text" placeholder="Enter IFSC code" name="ifsc_code" id="ifsc_code"
                                 class="w-60 rounded-md border text-xs mb-4 border-gray-500 bg-white py-3 pl-2 text-[#6B7280] h-7 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
                     </div>
@@ -471,35 +472,73 @@
 
 
                 <div class="text-center">
-                    <button type="submit" id="resetButton"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">submit</button>
+                    <input type="submit" id="resetButton"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                    </input>
                 </div>
             </div>
         </div>
     </form>
 
-    <script src="supplierform.js"></script>
+
+    <script src="./customerForm.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script>
+    <script type="text/javascript">
         $(document).ready(function () {
-            $('#formData').submit(function (e) {
+            $('#search').click(function (e) {
                 e.preventDefault();
-                var frmData = $(this).serialize();
+                var srch = $('#id').val();
 
-                $.post("ajaxCreateSupplier.php", frmData, function (response) {
-                    console.log("This is from success block");
-                    // console.log();
-                    console.log(response);
+                $.post("actionSearchCustomer.php", { srch }, function (data) {
 
-                    if (response.message) {
-                        $("#resetButton").html(response.message);
-                    }
-                    $('#formData')[0].reset();
-                }, "json").fail(function (error) {
-                    console.log("This is error block");
-                    console.log(error.responseText);
-                });
-            });
+                    console.log(data)
+                    var res = data
+
+                    console.log(data);
+                    $("#organization_name").val(res.data.organization_name);
+                    $("#organigation_type").val(res.data.oraganigation_type);
+                    $("#gst_number").val(res.data.gst_number);
+                    $("#customer_name").val(res.data.customer_name);
+                    $("#customer_type").val(res.data.customer_type);
+                    $("#sub_cutomer").val(res.data.sub_cutomer);
+                    $("#customer_status").val(res.data.customer_status);
+                    $("#starting_date").val(res.data.starting_date);
+                    $("#ending_date").val(res.data.ending_date);
+                    $("#contact_person_name").val(res.data.contact_person_name);
+                    $("#contact_person").val(res.data.contact_person);
+                    $("#contact_person_no").val(res.data.contact_person_no);
+                   
+
+                    $("#site_code").val(res.data.site_code);
+                    $("#site_name").val(res.data.site_name);
+                    $("#site_description").val(res.data.site_description);
+                    $("#add_line1").val(res.data.add_line1);
+                    $("#add_line2").val(res.data.add_line2);
+                    $("#postal_code").val(res.data.postal_code);
+                    $("#city_name").val(res.data.city_name);
+                    $("#state").val(res.data.state);
+                    $("#country").val(res.data.country);
+                    $("#contact_preson").val(res.data.contact_preson_name);
+                    $("#contact_person_email").val(res.data.contact_person);
+                    $("#contact_person_number").val(res.data.contact_person_no);
+
+
+
+                    $("#sites_code").val(res.data.site_code);
+                    $("#branch_name").val(res.data.branch_name);
+                    $("#branch_nubmer").val(res.data.branch_no);
+                    $("#branch_type").val(res.data.branch_type);
+                    $("#bank_name").val(res.data.bank_name);
+                    $("#bank_no").val(res.data.bank_no);
+                    $("#bank_type").val(res.data.bank_type);
+                    $("#account_name").val(res.data.account_name);
+                    $("#account_number").val(res.data.account_no);
+                    $("#account_type").val(res.data.account_type);
+                    $("#ifsc_code").val(res.data.ifsc_code);
+
+
+                }, "json")
+            })
         });
     </script>
 

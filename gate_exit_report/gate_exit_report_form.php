@@ -298,7 +298,38 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         </div>
     </section>
 
+    <script>
+    function exportTableToCSV(filename) {
+    const table = document.getElementById('dataTable');
+    let csv = [];
+    
+    // Get table headers
+    const headers = Array.from(table.querySelectorAll('th')).map(th => th.innerText);
+    csv.push(headers.join(','));
 
+    // Get table rows
+    const rows = Array.from(table.querySelectorAll('tr')).slice(1); // Exclude header row
+    rows.forEach(row => {
+        const cells = Array.from(row.querySelectorAll('td')).map(td => td.innerText);
+        csv.push(cells.join(','));
+    });
+
+    // Create a CSV file
+    const csvContent = csv.join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+
+    // Create a link to download the CSV
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', filename);
+    link.style.display = 'none';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>
 
 
 </body>
