@@ -1,16 +1,16 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "vivek-project-main") or die("connection failed");
+$conn = mysqli_connect("localhost", "root", "Algo@123", "vivek") or die("connection failed");
 
 
 if (isset($_REQUEST['srch'])) {
 
 
     $searchData = $_REQUEST['srch'] ;
-    $db = $conn->query("SELECT * FROM `vivek-project-main`.supplier_organization_details_tbl a  
+    $db = $conn->query("SELECT * FROM `vivek`.supplier_organization_details_tbl a  
 
-JOIN `vivek-project-main`.supplier_address_details_tbl b ON a.supplier_id=b.supplier_id
+JOIN `vivek`.supplier_address_details_tbl b ON a.supplier_id=b.supplier_id
 
-JOIN `vivek-project-main`.supplier_banking_details_tbl c ON a.supplier_id=c.supplier_id where a.supplier_id = $searchData"); 
+JOIN `vivek`.supplier_banking_details_tbl c ON a.supplier_id=c.supplier_id where a.supplier_id = $searchData"); 
     $data=mysqli_fetch_assoc($db);
     
 

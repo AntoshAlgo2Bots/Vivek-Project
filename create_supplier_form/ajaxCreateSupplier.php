@@ -1,5 +1,5 @@
 <?php
-$conn=mysqli_connect("localhost","root","","vivek-project-main") or die("connection failed");
+$conn=mysqli_connect("localhost","root","Algo@123","vivek") or die("connection failed");
 
 
 if(isset($_REQUEST['oraganigation_name'])){

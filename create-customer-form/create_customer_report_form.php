@@ -5,7 +5,7 @@
 // $password = "root";
 // $dbname = "for_office";
 
-$conn = mysqli_connect("localhost", "root", "", "vivek-project-main") or die("connection failed");
+$conn = mysqli_connect("localhost", "root", "Algo@123", "vivek") or die("connection failed");
 
 
 if ($conn->connect_error) {
@@ -18,9 +18,9 @@ if ($conn->connect_error) {
 
 
 $sql = "SELECT * 
-FROM customer_organizations_details_tbl a 
-INNER JOIN customer_address_details_tbl b ON a.customer_id = b.customer_id 
-INNER JOIN customer_banking_details_tbl c ON b.customer_id = c.customer_id;";
+FROM organization_details_tbl a 
+INNER JOIN address_details_tbl b ON a.customer_id = b.customer_id 
+INNER JOIN banking_details_tbl c ON b.customer_id = c.customer_id;";
 
 
 
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
 
 
-        $sql = "SELECT * FROM customer_organizations_details_tbl a INNER JOIN customer_address_details_tbl b ON a.customer_id = b.customer_id INNER JOIN customer_banking_details_tbl c ON a.customer_id = c.customer_id WHERE a.customer_id = '$query' OR a.organization_name = '$query'  OR a.oraganigation_type = '$query'";
+        $sql = "SELECT * FROM organizations_details_tbl a INNER JOIN address_details_tbl b ON a.customer_id = b.customer_id INNER JOIN banking_details_tbl c ON a.customer_id = c.customer_id WHERE a.customer_id = '$query' OR a.organization_name = '$query'  OR a.oraganigation_type = '$query'";
 
 
         $result = mysqli_query($conn, $sql);
@@ -248,7 +248,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                         <?php echo $row['organization_name'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['oraganigation_type'] ?>
+                                        <?php echo $row['organigation_type'] ?>
                                     </td>
                                     <td class="px-6 py-4">
                                         <?php echo $row['gst_number'] ?>

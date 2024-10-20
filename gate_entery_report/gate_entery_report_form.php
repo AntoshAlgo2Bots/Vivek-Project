@@ -5,7 +5,7 @@
 // $password = "root";
 // $dbname = "for_office";
 
-$conn=mysqli_connect("localhost","root","","vivek-project-main") or die("connection failed");
+$conn=mysqli_connect("localhost","root","Algo@123","for_office") or die("connection failed");
 
 
 if ($conn->connect_error) {
@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 
 
 
-$sql = "SELECT * FROM gate_entry_form ";
+$sql = "SELECT * FROM gate_entry_form_tbl ";
 
 
 $result = mysqli_query($conn, $sql);
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     if (isset($_GET["search_query"])) {
         $query = $_GET["search_query"];
 
-        $sql = "SELECT * FROM gate_entry_form  where po_number ='$query' or invoice_number ='$query' or no_of_boxes='$query' ";
+        $sql = "SELECT * FROM gate_entry_form_tbl  where po_number ='$query' or invoice_number ='$query' or no_of_boxes='$query' ";
 
         $result = mysqli_query($conn, $sql);
 
@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                         all</a>
                                 </div>
                             </div>
-                            <button id="filterDropdownButton" data-dropdown-toggle="filterDropdown"
+                            <button id="filterDropgitdownButton" data-dropdown-toggle="filterDropdown"
                                 class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                                 type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
@@ -178,17 +178,36 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                         class="w-full text-sm whitespace-nowrap text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                            <th scope="col" class="px-6 py-3">S.No </th>
+                            <th scope="col" class="px-6 py-3">Record Number </th>
 
                                 <th scope="col" class="px-6 py-3">Enter PO number </th>
                                 <th scope="col" class="px-6 py-3">Invoice number</th>
+                                <th scope="col" class="px-6 py-3">No. Of boxes</th>
+                                <th scope="col" class="px-6 py-3">Fright charges</th>
+                                <th scope="col" class="px-6 py-3">Weight</th>
                                 <th scope="col" class="px-6 py-3">Mode of transport</th>
                                 <th scope="col" class="px-6 py-3">Vehicle number</th>
-                                <th scope="col" class="px-6 py-3">No. Of boxes</th>
-                                <th scope="col" class="px-6 py-3">Weight</th>
-                                <th scope="col" class="px-6 py-3">Fright charges</th>
                                 <th scope="col" class="px-6 py-3">Received by</th>
                                 <th scope="col" class="px-6 py-3">Remarks</th>
+
+
+                                <th scope="col" class="px-6 py-3">Vendor Name </th>
+                                <th scope="col" class="px-6 py-3">Received Date</th>
+                                <th scope="col" class="px-6 py-3">Received Time</th>
+                                <th scope="col" class="px-6 py-3">Item Name</th>
+                                <th scope="col" class="px-6 py-3">Finish</th>
+                                <th scope="col" class="px-6 py-3">Dimension</th>
+                                <th scope="col" class="px-6 py-3">Box Detail</th>
+                                <th scope="col" class="px-6 py-3">Checked By</th>
+                                <th scope="col" class="px-6 py-3">Approved By</th>
+
+
+                                <th scope="col" class="px-6 py-3">Created By</th>
+                                <th scope="col" class="px-6 py-3">Created Date</th>
+                                <th scope="col" class="px-6 py-3">Updated By</th>
+                                <th scope="col" class="px-6 py-3">Updated Date</th>
+
+
                                 
                                     <span class="sr-only">Actions</span>
                                 </th>
@@ -225,14 +244,16 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                     <td class="px-6 py-4">
                                         <?php echo $row['weight'] ?>
                                     </td>
-                                    <td class="px-6 py-4">
-                                        <?php echo $row['recieving_datetime'] ?>
-                                    </td>
+                                   <!-- // <td class="px-6 py-4">
+                                        <?php //echo $row['recieving_datetime'] ?>
+                                    </td> -->
 
 
                                     <td class="px-6 py-4">
                                         <?php echo $row['mode_of_transport'] ?>
                                     </td>
+
+
 
 
                                     <td class="px-6 py-4">
@@ -246,6 +267,64 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
                                     <td class="px-6 py-4">
                                         <?php echo $row['remarks'] ?>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['remarks'] ?>
+                                    </td>
+
+
+
+
+                                   
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['vendor_name'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['received_date'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['received_time'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['item_name'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['finish'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['dimension'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['box_detail'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['checked_by'] ?>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['created_by'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['approved_by'] ?>
+                                    </td>
+                                    
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['created_date'] ?>
+                                    </td>
+                                    
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['updated_by'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['updated_by'] ?>
                                     </td>
                                     
                                     <td class="px-6 py-3 flex items-center justify-end">
