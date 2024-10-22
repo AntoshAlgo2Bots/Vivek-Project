@@ -1,11 +1,8 @@
 <?php
 
-// $servername = "localhost";
-// $username = "root";
-// $password = "root";
-// $dbname = "for_office";
 
-$conn=mysqli_connect("localhost","root","Algo@123","vivek") or die("connection failed");
+
+$conn=mysqli_connect("localhost","root","Algo@123","for_office") or die("connection failed");
 
 
 if ($conn->connect_error) {
@@ -17,7 +14,7 @@ if ($conn->connect_error) {
 
 
 
-$sql = "SELECT * FROM gate_exit_tbl ";
+$sql = "SELECT * FROM for_office.bom_hedar_detail a INNER JOIN for_office.bom_line_detail b ON a.header_id=b.bom_id";
 
 
 $result = mysqli_query($conn, $sql);
@@ -32,7 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     if (isset($_GET["search_query"])) {
         $query = $_GET["search_query"];
 
-        $sql = "SELECT * FROM gate_exit_report  where s_no ='$query' or po_number='$query' or invoice_number='$query' ";
+        $sql = "SELECT * FROM for_office.bom_hedar_detail a inner JOIN for_office.bom_line_detail b ON
+ a.header_id=b.bom_id where a.header_id ='$query' or a.item_name ='$query' or a.percantage='$query' ";
 
         $result = mysqli_query($conn, $sql);
 
@@ -57,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js">
     </script>
-    <title>Get Enter Report</title>
+    <title>Cretion Bom Report</title>
 </head>
 
 <body>
@@ -178,18 +176,29 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                         class="w-full text-sm whitespace-nowrap text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                            <th scope="col" class="px-6 py-3">S.No </th>
+                                <th scope="col" class="px-6 py-3">Record Number </th>
+                                <th scope="col" class="px-6 py-3">Item
+                                name</th>
+                                <th scope="col" class="px-6 py-3">revision</th>
+                                <th scope="col" class="px-6 py-3">Percantage</th>
+                                <th scope="col" class="px-6 py-3">Products</th>
+                                <th scope="col" class="px-6 py-3">Organisation
+                                mapping</th>
+                                <th scope="col" class="px-6 py-3">Ware
+                                house location</th>
 
-                                <th scope="col" class="px-6 py-3">Enter PO number </th>
-                                <th scope="col" class="px-6 py-3">Invoice number</th>
-                                <th scope="col" class="px-6 py-3">Mode of transport</th>
-                                <th scope="col" class="px-6 py-3">Vehicle number</th>
-                                <th scope="col" class="px-6 py-3">Number. Of boxes</th>
-                                <th scope="col" class="px-6 py-3">Weight</th>
-                                <th scope="col" class="px-6 py-3">Fright charges</th>
-                                <th scope="col" class="px-6 py-3">Dispatching Date & Time</th>
-                                <th scope="col" class="px-6 py-3">Dispatched by</th>
-                                <th scope="col" class="px-6 py-3">Remarks</th>
+                                <th scope="col" class="px-6 py-3">Process Seq</th>
+                                <th scope="col" class="px-6 py-3">Item Code</th>
+                                <th scope="col" class="px-6 py-3">Item
+                                Name</th>
+                                <th scope="col" class="px-6 py-3">Qty</th>
+                                <th scope="col" class="px-6 py-3">Percantage</th>
+                                <th scope="col" class="px-6 py-3">upload_image</th>
+                                <th scope="col" class="px-6 py-3">created_by</th>
+                                <th scope="col" class="px-6 py-3">created_date</th>
+                                <th scope="col" class="px-6 py-3">updated_by</th>
+                                <th scope="col" class="px-6 py-3">updated_date</th>
+
                                 
                                     <span class="sr-only">Actions</span>
                                 </th>
@@ -209,47 +218,68 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
                                 <tr class="border-b dark:border-gray-700">
                                 <td class="px-6 py-4">
-                                        <?php echo $row['s_no'] ?>
-                                    </td>
-                                <td class="px-6 py-4">
-                                        <?php echo $row['po_number'] ?>
+                                        <?php echo $row['header_id'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['invoice_number'] ?>
+                                        <?php echo $row['item_name'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['no_of_boxes'] ?>
+                                        <?php echo $row['revision'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['fireght_charges'] ?>
+                                        <?php echo $row['percentage'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['weight'] ?>
+                                        <?php echo $row['products'] ?>
                                     </td>
-                                   
-
-
                                     <td class="px-6 py-4">
-                                        <?php echo $row['mode_of_transport'] ?>
+                                        <?php echo $row['organizin_mapping'] ?>
                                     </td>
-
-
                                     <td class="px-6 py-4">
-                                        <?php echo $row['vehicle_number'] ?>
+                                        <?php echo $row['wharehouse_'] ?>
                                     </td>
-
-
                                     <td class="px-6 py-4">
-                                        <?php echo $row['dispatching_date_time'] ?>
+                                        <?php echo $row['process_seq'] ?>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['item_code'] ?>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['item_name'] ?>
                                     </td>
 
                                     <td class="px-6 py-4">
-                                        <?php echo $row['dispatched_'] ?>
+                                        <?php echo $row['quantity'] ?>
                                     </td>
 
                                     <td class="px-6 py-4">
-                                        <?php echo $row['remarks'] ?>
+                                        <?php echo $row['percentage'] ?>
                                     </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row[''] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['created_by'] ?>
+                                    </td>
+
+                                    
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['created_date'] ?>
+                                    </td>
+
+                                    
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['updated_by'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['updated_date'] ?>
+                                    </td>
+
+
+
                                     
                                     <td class="px-6 py-3 flex items-center justify-end">
                                         <button id="apple-imac-27-dropdown-button"
@@ -297,7 +327,6 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             </div>
         </div>
     </section>
-
     <script>
     function exportTableToCSV(filename) {
     const table = document.getElementById('dataTable');
@@ -330,6 +359,8 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     document.body.removeChild(link);
 }
 </script>
+
+
 
 
 </body>

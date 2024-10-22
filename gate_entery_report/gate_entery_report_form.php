@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     if (isset($_GET["search_query"])) {
         $query = $_GET["search_query"];
 
-        $sql = "SELECT * FROM gate_entry_form_tbl  where po_number ='$query' or invoice_number ='$query' or no_of_boxes='$query' ";
+        $sql = "SELECT * FROM gate_entry_form_tbl  where po_number ='$query'or s_no ='$query' or invoice_number ='$query' or no_of_boxes='$query' ";
 
         $result = mysqli_query($conn, $sql);
 
@@ -188,7 +188,6 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                 <th scope="col" class="px-6 py-3">Mode of transport</th>
                                 <th scope="col" class="px-6 py-3">Vehicle number</th>
                                 <th scope="col" class="px-6 py-3">Received by</th>
-                                <th scope="col" class="px-6 py-3">Remarks</th>
 
 
                                 <th scope="col" class="px-6 py-3">Vendor Name </th>
@@ -200,6 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                 <th scope="col" class="px-6 py-3">Box Detail</th>
                                 <th scope="col" class="px-6 py-3">Checked By</th>
                                 <th scope="col" class="px-6 py-3">Approved By</th>
+                                <th scope="col" class="px-6 py-3">Remarks</th>
 
 
                                 <th scope="col" class="px-6 py-3">Created By</th>
@@ -266,24 +266,16 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                     </td>
 
                                     <td class="px-6 py-4">
-                                        <?php echo $row['remarks'] ?>
+                                        <?php echo $row['vendor_name'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?php echo $row['remarks'] ?>
+                                        <?php echo $row['received_date'] ?>
                                     </td>
 
 
 
 
                                    
-                                    <td class="px-6 py-4">
-                                        <?php echo $row['vendor_name'] ?>
-                                    </td>
-
-                                    <td class="px-6 py-4">
-                                        <?php echo $row['received_date'] ?>
-                                    </td>
-
                                     <td class="px-6 py-4">
                                         <?php echo $row['received_time'] ?>
                                     </td>
@@ -307,14 +299,18 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                     <td class="px-6 py-4">
                                         <?php echo $row['checked_by'] ?>
                                     </td>
-                                    <td class="px-6 py-4">
-                                        <?php echo $row['created_by'] ?>
-                                    </td>
 
                                     <td class="px-6 py-4">
                                         <?php echo $row['approved_by'] ?>
                                     </td>
-                                    
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['remarks'] ?>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['created_by'] ?>
+                                    </td>
+
                                     <td class="px-6 py-4">
                                         <?php echo $row['created_date'] ?>
                                     </td>
@@ -322,10 +318,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                     <td class="px-6 py-4">
                                         <?php echo $row['updated_by'] ?>
                                     </td>
-
+                                    
                                     <td class="px-6 py-4">
-                                        <?php echo $row['updated_by'] ?>
+                                        <?php echo $row['updated_date'] ?>
                                     </td>
+
+                                    
                                     
                                     <td class="px-6 py-3 flex items-center justify-end">
                                         <button id="apple-imac-27-dropdown-button"

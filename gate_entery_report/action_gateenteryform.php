@@ -7,13 +7,16 @@ if (!$conn) {
 
 $response = [];
 
+// Insert operation
 if (isset($_REQUEST['po_number'])) {
     $created_by = 'admin';
-    $created_date = date('Y-m-d H:i:s');
+    $created_date = date('Y-m-d');
+    $updated_by = 'rg1';
+    $updated_date = date('Y-m-d H:i:s'); // Use Y-m-d H:i:s format
 
     // Prepare the SQL statement
-    $sql = "INSERT INTO gate_entry_form_tbl(po_number, invoice_number, no_of_boxes, fireght_charges, weight, mode_of_transport, vehicle_number, recieved_by,  vendor_name, received_date, received_time, item_name, finish, dimension, box_detail, checked_by, approved_by, remarks,created_by,created_date,updated_by,updated_date) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO gate_entry_form_tbl (po_number, invoice_number, no_of_boxes, fireght_charges, weight, mode_of_transport, vehicle_number, recieved_by, vendor_name, received_date, received_time, item_name, finish, dimension, box_detail, checked_by, approved_by, remarks, created_by, created_date, updated_by, updated_date) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
     // Prepare the statement
     $stmt = $conn->prepare($sql);
@@ -25,7 +28,7 @@ if (isset($_REQUEST['po_number'])) {
             $_REQUEST['po_number'],
             $_REQUEST['invoice_number'],
             $_REQUEST['no_of_boxes'],
-            $_REQUEST['fireght_charges'],
+            $_REQUEST['fireght_charges'], // Corrected here
             $_REQUEST['weight'],
             $_REQUEST['mode_of_transport'],
             $_REQUEST['vehicle_number'],
@@ -64,21 +67,27 @@ if (isset($_REQUEST['po_number'])) {
     }
 }
 
+// Search operation
+if (isset($_REQUEST['srch'])) {
+    $searchData = $conn->real_escape_string($_REQUEST['srch']); // Sanitize input to prevent SQL injection
+
+    $db = $conn->query("SELECT * FROM gate_entry_form_tbl WHERE s_no = '$searchData'"); // Use quotes for string values
+    if ($db) {
+        $data = mysqli_fetch_assoc($db);
+        if ($data) {
+            $response["success"] = true;
+            $response["message"] = "Data retrieved successfully";
+            $response['data'] = $data;
+        } else {
+            $response['success'] = false;
+            $response['message'] = "No results found.";
+        }
+    } else {
+        $response['success'] = false;
+        $response['message'] = "Query failed: " . mysqli_error($conn);
+    }
+}
+
 $conn->close();
 echo json_encode($response);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>

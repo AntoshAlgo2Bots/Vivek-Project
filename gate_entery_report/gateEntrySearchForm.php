@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.4/dist/tailwind.min.css" rel="stylesheet">
-    <title>Gate Entry Creation Form</title>
+    <title>Gate Entry Search Form</title>
 </head>
 
 <body>
@@ -135,6 +135,8 @@
 
             $.post("action_searchForm.php", { srch }, function (data) {
                 console.log("Response received:", data);
+               
+                // console.log( $("#dateInput").val(data.data.created_date || ''));
 
                 if (data.success) {
                     // Assuming data.data contains the result
@@ -146,6 +148,7 @@
                     $("#vehicle_number").val(data.data.vehicle_number || '');
                     $("#recieved_by").val(data.data.recieved_by || '');
                     $("#remarks").val(data.data.remarks || '');
+                    $("#created_date").val(data.data.created_date || '');
                     $("#created_by").val(data.data.created_by || '');
                     $("#vendor_name").val(data.data.vendor_name || '');
                     $("#received_date").val(data.data.received_date || '');
@@ -156,10 +159,9 @@
                     $("#box_detail").val(data.data.box_detail || '');
                     $("#checked_by").val(data.data.checked_by || '');
                     $("#approved_by").val(data.data.approved_by || '');
-                    $("#created_date").val(data.data.created_date || '');
                     $("#mode_of_transport").val(data.data.mode_of_transport || '');
-                    $("#created_by").val(data.data.created_by || '');
-                    $("#created_date").val(data.data.created_date || '');
+                    // $("#updated_by").val(data.data.updated_by || '');
+                    // $("#updated_date").val(data.data.updated_date || '');
                 } else {
                     // Handle the case when the search is unsuccessful
                     alert(data.message || "No results found.");

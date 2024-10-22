@@ -2,7 +2,7 @@
 
 
 
-$conn=mysqli_connect("localhost","root","","vivek-project-main") or die("connection failed");
+$conn=mysqli_connect("localhost","root","Algo@123","for_office") or die("connection failed");
 
 
 if ($conn->connect_error) {
@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 
 
-$sql = "SELECT * FROM create_bom_header_level a INNER JOIN create_bom_line_level b ON a.record_number=b.record_number";
+$sql = "SELECT * FROM for_office.bom_hedar_detail a INNER JOIN for_office.bom_line_detail b ON a.header_id=b.bom_id";
 
 
 $result = mysqli_query($conn, $sql);
@@ -29,8 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     if (isset($_GET["search_query"])) {
         $query = $_GET["search_query"];
 
-        $sql = "SELECT * FROM create_bom_header_level a inner JOIN create_bom_line_level b ON
- a.record_number=b.record_number where a.record_number ='$query' or a.item_name ='$query' or a.percantage='$query' ";
+        $sql = "SELECT * FROM for_office.bom_hedar_detail a inner JOIN for_office.bom_line_detail b ON
+ a.header_id=b.bom_id where a.header_id ='$query' or a.item_name ='$query' or a.percantage='$query' ";
 
         $result = mysqli_query($conn, $sql);
 
@@ -177,18 +177,28 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">Record Number </th>
+                                <th scope="col" class="px-6 py-3">Item
+                                name</th>
+                                <th scope="col" class="px-6 py-3">revision</th>
+                                <th scope="col" class="px-6 py-3">Percantage</th>
+                                <th scope="col" class="px-6 py-3">Products</th>
+                                <th scope="col" class="px-6 py-3">Organisation
+                                mapping</th>
+                                <th scope="col" class="px-6 py-3">Ware
+                                house location</th>
+
                                 <th scope="col" class="px-6 py-3">Process Seq</th>
                                 <th scope="col" class="px-6 py-3">Item Code</th>
-                                <th scope="col" class="px-6 py-3">Item Name</th>
+                                <th scope="col" class="px-6 py-3">Item
+                                Name</th>
                                 <th scope="col" class="px-6 py-3">Qty</th>
                                 <th scope="col" class="px-6 py-3">Percantage</th>
-                                <th scope="col" class="px-6 py-3">item_name</th>
-                                <th scope="col" class="px-6 py-3">revision</th>
-                                <th scope="col" class="px-6 py-3">percantage</th>
-                                <th scope="col" class="px-6 py-3">products</th>
-                                <th scope="col" class="px-6 py-3">organisation_mapping</th>
                                 <th scope="col" class="px-6 py-3">upload_image</th>
-                                <th scope="col" class="px-6 py-3">ware_house_location</th>
+                                <th scope="col" class="px-6 py-3">created_by</th>
+                                <th scope="col" class="px-6 py-3">created_date</th>
+                                <th scope="col" class="px-6 py-3">updated_by</th>
+                                <th scope="col" class="px-6 py-3">updated_date</th>
+
                                 
                                     <span class="sr-only">Actions</span>
                                 </th>
@@ -208,7 +218,25 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
                                 <tr class="border-b dark:border-gray-700">
                                 <td class="px-6 py-4">
-                                        <?php echo $row['record_number'] ?>
+                                        <?php echo $row['header_id'] ?>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['item_name'] ?>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['revision'] ?>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['percentage'] ?>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['products'] ?>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['organizin_mapping'] ?>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['wharehouse_'] ?>
                                     </td>
                                     <td class="px-6 py-4">
                                         <?php echo $row['process_seq'] ?>
@@ -219,36 +247,39 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                     <td class="px-6 py-4">
                                         <?php echo $row['item_name'] ?>
                                     </td>
+
                                     <td class="px-6 py-4">
-                                        <?php echo $row['qty'] ?>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <?php echo $row['percantage'] ?>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <?php echo $row['item_name'] ?>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <?php echo $row['revision'] ?>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <?php echo $row['percantage'] ?>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <?php echo $row['products'] ?>
+                                        <?php echo $row['quantity'] ?>
                                     </td>
 
                                     <td class="px-6 py-4">
-                                        <?php echo $row['organisation_mapping'] ?>
+                                        <?php echo $row['percentage'] ?>
                                     </td>
 
                                     <td class="px-6 py-4">
-                                        <?php echo $row['upload_image'] ?>
+                                        <?php echo $row[''] ?>
                                     </td>
 
                                     <td class="px-6 py-4">
-                                        <?php echo $row['ware_house_location'] ?>
+                                        <?php echo $row['created_by'] ?>
                                     </td>
+
+                                    
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['created_date'] ?>
+                                    </td>
+
+                                    
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['updated_by'] ?>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <?php echo $row['updated_date'] ?>
+                                    </td>
+
+
+
                                     
                                     <td class="px-6 py-3 flex items-center justify-end">
                                         <button id="apple-imac-27-dropdown-button"
